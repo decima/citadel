@@ -1,0 +1,49 @@
+
+###
+
+POST {{url}}/blocks
+Content-Type: application/json
+
+{
+  "type": "text",
+  "content": "Hello, world!"
+}
+
+> {%
+    client.global.set("uuid", response.body.id);
+%}
+
+###
+< {%
+    if (client.global.get("uuid")) {
+        request.variables.set("parent", client.global.get("uuid"));
+    }
+
+%}
+POST {{url}}/blocks/580b67af-5709-4d63-b99a-f1545a4d2440
+Content-Type: application/json
+
+{
+  "type": "text",
+  "content": "Hellothis is some child"
+}
+###
+
+
+###
+GET {{url}}/blocks
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZTM2OGRkOTUtZDZlZS00ZjA3LWI4ZTktNjU1YzEyOGNkM2MyIiwiaWF0IjoxNzQzOTc5NTY1fQ.hkdlZdPE9LBdRQE_l9rl5GOaA5Q84jnNX-reTSkWtLg
+
+###
+< {%
+    if (client.global.get("uuid")) {
+        request.variables.set("uuid", client.global.get("uuid"));
+    }
+
+%}
+GET {{url}}/blocks/{{uuid}}
+
+###
+GET {{url}}/me
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZTM2OGRkOTUtZDZlZS00ZjA3LWI4ZTktNjU1YzEyOGNkM2MyIiwiaWF0IjoxNzQzOTc5NTY1fQ.hkdlZdPE9LBdRQE_l9rl5GOaA5Q84jnNX-reTSkWtLg
+
