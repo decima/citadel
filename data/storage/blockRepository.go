@@ -2,8 +2,13 @@ package storage
 
 import (
 	"citadel-api/data/model"
+	"citadel-api/utils/container"
 	"gorm.io/gorm"
 )
+
+func init() {
+	container.Add[BlockRepositoryInterface](NewBlockRepository())
+}
 
 type BlockRepositoryInterface interface {
 	Get(uuid string) (*model.Block, error)

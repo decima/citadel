@@ -1,8 +1,8 @@
 package middlewares
 
 import (
-	"citadel-api/data/model"
 	"citadel-api/data/services"
+	"citadel-api/utils/container"
 	"github.com/gin-gonic/gin"
 )
 
@@ -18,7 +18,7 @@ func AuthHandler(c *gin.Context) {
 	}
 	jwt = jwt[7:]
 	// get Block from JWT
-	block, err := services.NewAccessManager().GetFromJWT(jwt)
+	user, err := container.ShouldGet[services.AccessManagerInterface]().GetFromJWT(jwt)
 	if err != nil {
 		c.JSON(401, gin.H{"error": "Invalid JWT"})
 		GetLogger(c).Error().Msgf("Invalid JWT: %v", err)
@@ -26,14 +26,15 @@ func AuthHandler(c *gin.Context) {
 		return
 	}
 
-	c.Set(currentUserField, block)
+	c.Set(currentUserField, user)
+	c.Next()
 
 }
 
-func GetCurrentUser(c *gin.Context) *model.Block {
+func GetCurrentUser(c *gin.Context) *services.User {
 	block, exists := c.Get(currentUserField)
 	if !exists {
 		return nil
 	}
-	return block.(*model.Block)
+	return block.(*services.User)
 }

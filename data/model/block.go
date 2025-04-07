@@ -7,13 +7,13 @@ import (
 )
 
 type Block struct {
-	Id         string         `gorm:"primarykey,type:uuid" json:"id"`
-	Type       string         `json:"type"`
-	Content    *string        `json:"content,omitempty"`
-	Children   []Block        `json:"children,omitempty" gorm:"foreignKey:ParentID"`
-	Properties map[string]any `json:"properties,omitempty" gorm:"serializer:json"`
-	Parent     *Block         `json:"-"`
-	ParentID   *string        `json:"-"`
+	Id         string  `gorm:"primarykey,type:uuid" json:"id"`
+	Type       string  `json:"type"`
+	Content    *string `json:"content,omitempty"`
+	Children   []Block `json:"children,omitempty" gorm:"foreignKey:ParentID"`
+	Properties any     `json:"properties,omitempty" gorm:"serializer:json"`
+	Parent     *Block  `json:"-"`
+	ParentID   *string `json:"-"`
 
 	CreatedAt time.Time      `json:"created_at"`
 	UpdatedAt time.Time      `json:"updated_at"`

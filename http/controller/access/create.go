@@ -2,6 +2,7 @@ package access
 
 import (
 	"citadel-api/data/services"
+	"citadel-api/utils/container"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,7 +18,7 @@ func (access *AccessController) Create(c *gin.Context) {
 		return
 	}
 
-	token, err := services.NewAccessManager().Create(accessRequest.Name, accessRequest.Role)
+	token, err := container.ShouldGet[services.AccessManagerInterface]().Create(accessRequest.Name, accessRequest.Role)
 	if err != nil {
 		c.JSON(500, gin.H{"error": "Failed to create access token"})
 		return

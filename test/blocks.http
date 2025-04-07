@@ -32,7 +32,7 @@ Content-Type: application/json
 
 ###
 GET {{url}}/blocks
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZTM2OGRkOTUtZDZlZS00ZjA3LWI4ZTktNjU1YzEyOGNkM2MyIiwiaWF0IjoxNzQzOTc5NTY1fQ.hkdlZdPE9LBdRQE_l9rl5GOaA5Q84jnNX-reTSkWtLg
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiOTNmYmE1MmUtYjRkMi00MjZlLTgwY2ItN2JmODRkMTJkNWY4IiwiaWF0IjoxNzQ0MDQwNDgwfQ.EJnERRbMLlvZUIMqquJx_lCNNMfHAYCZXXF48_LvAaY
 
 ###
 < {%
@@ -45,5 +45,5 @@ GET {{url}}/blocks/{{uuid}}
 
 ###
 GET {{url}}/me
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZTM2OGRkOTUtZDZlZS00ZjA3LWI4ZTktNjU1YzEyOGNkM2MyIiwiaWF0IjoxNzQzOTc5NTY1fQ.hkdlZdPE9LBdRQE_l9rl5GOaA5Q84jnNX-reTSkWtLg
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiOTNmYmE1MmUtYjRkMi00MjZlLTgwY2ItN2JmODRkMTJkNWY4IiwiaWF0IjoxNzQ0MDQwNDgwfQ.EJnERRbMLlvZUIMqquJx_lCNNMfHAYCZXXF48_LvAaY
 
